@@ -7,13 +7,16 @@
 //
 // 实现分布：
 //   cuowu.cp    错误消息与判定函数
-//   lianjie.cp  Options / Conn、连接与关闭
+//   lianjie.cp  Options / Conn / ExecResult / Rows、连接、执行、查询
 //   cmysql.c    C 薄包装（libmariadb）
 // ============================================================
 
-// ===== 连接（connect / close 为 fails）=====
-export import { connect, connect as lianjie,
-                close,   close   as guanbi } from "./lianjie.cp"
+// ===== 连接与执行（column_index 以外均为 fails）=====
+export import { connect,      connect      as lianjie,
+                exec,         exec         as zhixing,
+                query,        query        as chaxun,
+                column_index, column_index as lie_xuhao,
+                close,        close        as guanbi } from "./lianjie.cp"
 
 // ===== 错误判定族：收 e.code 返回 bool =====
 export import { is_duplicate,      is_duplicate      as shi_chongfu,
